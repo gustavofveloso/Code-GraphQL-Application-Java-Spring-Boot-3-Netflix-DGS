@@ -1,4 +1,4 @@
-package com.course.graphql.FakeHelloDataResolverTest;
+package com.course.graphql;
 
 import com.netflix.graphql.dgs.DgsQueryExecutor;
 import org.apache.commons.lang3.StringUtils;
