@@ -1,4 +1,4 @@
 package myservice.service;
 
-public record Pet(String name, String color) {
+public record Pet(String name, String color, String ownerId) {
 }

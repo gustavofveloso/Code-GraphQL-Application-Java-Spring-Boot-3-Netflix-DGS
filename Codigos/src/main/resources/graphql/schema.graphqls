@@ -1,7 +1,22 @@
 type Query {
   pets: [Pet]
 }
+
 type Pet {
   name: String
   color: String
+  owner: Person
+}
+
+type Person {
+  name: String
+}
+
+query petsAndOwners {
+  pets {
+    name
+    owner {
+      name
+    }
+  }
 }
