@@ -58,6 +58,10 @@ public class FakeMobileAppDataResolver {
             return false;
         }
 
+        if (mobileAppFilter.getCategory() != null && !mobileApp.getCategory().equals(mobileAppFilter.getCategory())) {
+            return false;
+        }
+
         return true;
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import com.course.graphql.generated.types.Address;
 import com.course.graphql.generated.types.Author;
 import com.course.graphql.generated.types.MobileApp;
+import com.course.graphql.generated.types.MobileAppCategory;
 
 import jakarta.annotation.PostConstruct;
 import net.datafaker.Faker;
@@ -41,9 +42,9 @@ public class FakeMobileAppDataSource {
                     .releaseDate(LocalDate.now().minusDays(faker.random().nextInt(365)))
                     .downloaded(faker.number().numberBetween(1, 1_500_000))
                     .homepage(new URL("https://" + faker.internet().url()))
-                    // .category(MobileAppCategory.values()[
-                    //      faker.random().nextInt(MobileAppCategory.values().length)]
-                    // )
+                    .category(MobileAppCategory.values()[
+                         faker.random().nextInt(MobileAppCategory.values().length)]
+                    )
                     .build();
 
             for (int j = 0; j < ThreadLocalRandom.current().nextInt(1, 3); j++) {
