@@ -30,4 +30,25 @@ public class FakeBookDataResolver {
                         b.getAuthor().getName(), authorName.get()
                 )).collect(Collectors.toList());
     }
+
+    @DgsData(
+        parentType = DgsConstants.QUERY_TYPE,
+        field = DgsConstants.QUERY.BooksByReleased
+    )
+    public List<Book> getBooksByReleased(DataFetchingEnvironment dataFetchingEnvironment) {
+        var releasedMap = (Map<String, Object>) dataFetchingEnvironment.getArgument("releasedInput");
+        var releasedInput = ReleaseHistoryInput.newBuilder()
+                .printedEdition((boolean) releasedMap.get(DgsConstants.RELEASEHISTORYINPUT.PrintedEdition))
+                .year((int) releasedMap.get(DgsConstants.RELEASEHISTORYINPUT.Year))
+                .build();
+
+        return FakeBookDataSource.BOOK_LIST.stream().filter(
+            b -> this.matchReleaseHistory(releasedInput, b.getReleased())
+        ).collect(Collectors.toList());
+    }
+
+    private boolean matchReleaseHistory(ReleaseHistoryInput input, ReleaseHistory element) {
+        return input.getPrintedEdition().equals(element.getPrintedEdition())
+                && input.getYear() == element.getYear();
+    }
 }
