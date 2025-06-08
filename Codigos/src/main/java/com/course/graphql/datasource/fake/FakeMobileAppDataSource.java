@@ -1,6 +1,7 @@
 package com.course.graphql.datasource.fake;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +38,9 @@ public class FakeMobileAppDataSource {
                     .author(author).version(faker.app().version())
                     .platform(randomMobileAppPlatform())
                     .appId(UUID.randomUUID().toString())
-                    // .releaseDate(LocalDate.now().minusDays(faker.random().nextInt(365)))
-                    // .downloaded(faker.number().numberBetween(1, 1_500_000))
-                    // .homepage(new URL("https://" + faker.internet().url()))
+                    .releaseDate(LocalDate.now().minusDays(faker.random().nextInt(365)))
+                    .downloaded(faker.number().numberBetween(1, 1_500_000))
+                    .homepage(new URL("https://" + faker.internet().url()))
                     // .category(MobileAppCategory.values()[
                     //      faker.random().nextInt(MobileAppCategory.values().length)]
                     // )
