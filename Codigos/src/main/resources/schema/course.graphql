@@ -13,3 +13,10 @@ type Query {
   pets(petFilter: PetFilter): [Pet]
   smartSearch(keyword: String): [SmartSearchResult]
 }
+
+type Mutation {
+  addHello(helloInput: HelloInput!): Int
+  replaceHelloText(helloInput: HelloInput!): [Hello]
+  # replaceHelloText(number: Int!, newText: String!): [Hello]
+  deleteHello(number: Int!): Int
+}
