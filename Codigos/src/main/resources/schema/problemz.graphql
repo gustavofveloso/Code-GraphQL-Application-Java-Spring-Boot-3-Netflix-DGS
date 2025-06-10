@@ -1,0 +1,40 @@
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    avatar: Url
+    createDateTime: DateTime!
+    displayName: String
+}
+
+type Problem implements SearchableItem {
+    id: ID!
+    createDateTime: DateTime!
+    prettyCreateDateTime: String
+    title: String!
+    content: String!
+    tags: [String!]!
+    solutionCount: NonNegativeInt!
+}
+
+type Solution implements SearchableItem {
+    id: ID!
+    createDateTime: DateTime!
+    prettyCreateDateTime: String
+    content: String!
+    category: SolutionCategory!
+    voteAsGoodCount: NonNegativeInt
+    voteAsBadCount: NonNegativeInt
+}
+
+enum SolutionCategory {
+    EXPLANATION
+    REFERENCE
+}
+
+interface SearchableItem {
+    id: ID!
+    createDateTime: DateTime!
+    prettyCreateDateTime: String
+    content: String!
+}
