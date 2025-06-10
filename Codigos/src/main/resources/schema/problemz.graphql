@@ -38,3 +38,7 @@ interface SearchableItem {
     prettyCreateDateTime: String
     content: String!
 }
+
+input SearchItemFilter {
+    keyword: String
+}
